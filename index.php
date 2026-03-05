@@ -9,9 +9,7 @@
 
   // 3. FLUXO DE CONTROLE (Interceptando o POST do formulário)
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    sleep(1);
           
-
     // Captura e sanitiza os dados que vieram do HTML
     $nome = !empty($_POST['nome']) ? trim($_POST['nome']) : "Anônimo";
     $idade = isset($_POST['idade']) ? (int)$_POST['idade'] : 0;
@@ -29,6 +27,8 @@
     } else {
         $erroMensagem = $resposta['mensagem'] ?? 'Erro ao processar os dados.';
     }
+
+    sleep(1);
   }
 ?>
 
@@ -86,11 +86,6 @@
             </div>
           </div>
 
-          
-          <!-- <button type="submit" id="btnCalcular">
-            <span id="btn-text">Calcular Valores</span>
-          </button> -->
-
           <button type="submit" id="btnCalcular" 
             onclick="this.innerHTML='<div class=\'spinner\'></div> Calculando...';">
             <span id="btn-text">Calcular Valores</span>
@@ -100,9 +95,19 @@
 
       <?php if ($exibirResultado): ?>
         <section id="resultado" class="result-section">
-          <h3>Paciente: <span id="res-nome"><?= htmlspecialchars($dadosPaciente['nome']) ?></span></h3>
+          <!-- <h3>Paciente: <span id="res-nome"><?= htmlspecialchars($dadosPaciente['nome']) ?></span></h3> -->
+            <div class="paciente-info-grid">
+              <p><strong>Paciente:</strong> <span id="res-nome"><?= htmlspecialchars($nome) ?></span></p>
+              
+              <div class="paciente-grid">
+                  <p><strong>Idade:</strong> <span id="res-idade"><?= htmlspecialchars($idade) ?></span> anos</p>
+                  <p><strong>Gênero:</strong> <span id="res-genero"><?= htmlspecialchars($genero) ?></span></p>
+                  <p><strong>Peso:</strong> <span id="res-peso"><?= htmlspecialchars($peso) ?></span> kg</p>
+                  <p><strong>Altura:</strong> <span id="res-altura"><?= htmlspecialchars($altura) ?></span> cm</p>
+              </div>
+          </div>
 
-          <h4 class="section-title">Manovacuometria Prevista</h4>
+          <h4 class="section-title">Predito Manovacuometria</h4>
           <div class="result-cards">
             <div class="card">
               <h4>PImax</h4>
@@ -115,7 +120,7 @@
           </div>
 
           <h4 class="section-title" style="margin-top: 20px">
-            Dinamometria Prevista
+            Predito Dinamometria
           </h4>
           <div class="result-cards secondary-result">
             <div class="card">
@@ -127,7 +132,19 @@
               <p><span id="ndom-val"><?= $dadosPaciente['ndom'] ?></span> <small>kgf</small></p>
             </div>
           </div>
+
+          <h4 class="section-title" style="margin-top: 20px">
+            Predito TC6M
+          </h4>
+          <div class="result-cards third-result">
+            <div class="card">
+              <h4>Distância Percorrida</h4>
+              <p><span id="dom-val"><?= $dadosPaciente['tc6m'] ?></span> <small>m</small></p>
+            </div>
+          </div>
         </section>
+
+        
         <script>document.getElementById('resultado').scrollIntoView();</script>
       <?php endif; ?>
     </div>

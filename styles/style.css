@@ -122,12 +122,31 @@ button {
   border-left: 4px solid #55a630;
 }
 
+.third-result .card {
+  border-left: 4px solid #ffd000;
+}
+
 .card {
   background: white;
   padding: 15px;
   border-radius: 8px;
   text-align: center;
   border-left: 4px solid var(--primary);
+}
+
+.paciente-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Cria 2 colunas de tamanhos iguais */
+  gap: 5px; /* Espaço entre os itens */
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #ffffff; /* Um fundo leve para destacar */
+  border-radius: 8px;
+}
+
+.grid-item {
+  font-size: 1rem;
+  color: #333;
 }
 
 .error-text {
@@ -199,5 +218,11 @@ footer {
 
   h1 {
     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .paciente-grid {
+    grid-template-columns: 1fr; /* Vira uma coluna única em telas bem pequenas */
   }
 }
