@@ -57,13 +57,13 @@
         <form method="POST" action="">
           <div class="input-group">
             <label for="nome">Nome do Paciente</label>
-            <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>" />
+            <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>" onfocus="this.value=''"/>
           </div>
 
           <div class="grid-inputs">
             <div class="input-group">
               <label for="idade">Idade (anos)</label>
-              <input type="number" id="idade" name="idade" value="<?= htmlspecialchars($_POST['idade'] ?? '') ?>" />
+              <input type="number" id="idade" name="idade" value="<?= htmlspecialchars($_POST['idade'] ?? '') ?>" onfocus="this.value=''"/>
             </div>
             
             <div class="input-group">
@@ -77,12 +77,12 @@
             
             <div class="input-group">
               <label for="peso">Peso (kg)</label>
-              <input type="number" step="any" id="peso" name="peso" value="<?= htmlspecialchars($_POST['peso'] ?? '') ?>" />
+              <input type="number" step="any" id="peso" name="peso" value="<?= htmlspecialchars($_POST['peso'] ?? '') ?>" onfocus="this.value=''"/>
             </div>
             
             <div class="input-group">
               <label for="altura">Altura (cm)</label>
-              <input type="number" step="any" id="altura" name="altura" value="<?= htmlspecialchars($_POST['altura'] ?? '') ?>" />
+              <input type="number" step="any" id="altura" name="altura" value="<?= htmlspecialchars($_POST['altura'] ?? '') ?>" onfocus="this.value=''"/>
             </div>
           </div>
 

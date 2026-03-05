@@ -117,6 +117,18 @@ button {
   margin-top: 15px;
 }
 
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  border-left: 4px solid var(--primary);
+}
+
+.third-result {
+  display: block;
+}
+
 /* Cor secundária para o segundo bloco de resultados */
 .secondary-result .card {
   border-left: 4px solid #55a630;
@@ -124,14 +136,6 @@ button {
 
 .third-result .card {
   border-left: 4px solid #ffd000;
-}
-
-.card {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  border-left: 4px solid var(--primary);
 }
 
 .paciente-grid {
