@@ -26,7 +26,7 @@ function calcularAvaliacaoFisio($nome, $idade, $genero, $peso, $altura) {
     if ($genero === "masculino") {
         $distanciaPrevista = 7.57 * $altura - 5.02 * $idade - 1.76 * $peso - 309;
     } else {
-        $distanciaPrevista = 2.11 * $altura - 2.29 * $peso - 5.78 * $idade - 667;
+        $distanciaPrevista = 2.11 * $altura - 2.29 * $peso - 5.78 * $idade + 667;
     }
 
     return [
