@@ -9,24 +9,26 @@
 
   // 3. FLUXO DE CONTROLE (Interceptando o POST do formulário)
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
-      
-      // Captura e sanitiza os dados que vieram do HTML
-      $nome = !empty($_POST['nome']) ? trim($_POST['nome']) : "Paciente Anônimo";
-      $idade = isset($_POST['idade']) ? (int)$_POST['idade'] : 0;
-      $genero = $_POST['genero'] ?? '';
-      $peso = isset($_POST['peso']) ? (float)$_POST['peso'] : 0;
-      $altura = isset($_POST['altura']) ? (float)$_POST['altura'] : 0;
+    sleep(1);
+          
 
-      // Chama a regra de negócio isolada
-      $resposta = calcularAvaliacaoFisio($nome, $idade, $genero, $peso, $altura);
-      
-      // Verifica o estado da resposta para decidir o que renderizar
-      if (isset($resposta['sucesso']) && $resposta['sucesso'] === true) {
-          $dadosPaciente = $resposta;
-          $exibirResultado = true;
-      } else {
-          $erroMensagem = $resposta['mensagem'] ?? 'Erro ao processar os dados.';
-      }
+    // Captura e sanitiza os dados que vieram do HTML
+    $nome = !empty($_POST['nome']) ? trim($_POST['nome']) : "Anônimo";
+    $idade = isset($_POST['idade']) ? (int)$_POST['idade'] : 0;
+    $genero = $_POST['genero'] ?? '';
+    $peso = isset($_POST['peso']) ? (float)$_POST['peso'] : 0;
+    $altura = isset($_POST['altura']) ? (float)$_POST['altura'] : 0;
+
+    // Chama a regra de negócio isolada
+    $resposta = calcularAvaliacaoFisio($nome, $idade, $genero, $peso, $altura);
+    
+    // Verifica o estado da resposta para decidir o que renderizar
+    if (isset($resposta['sucesso']) && $resposta['sucesso'] === true) {
+        $dadosPaciente = $resposta;
+        $exibirResultado = true;
+    } else {
+        $erroMensagem = $resposta['mensagem'] ?? 'Erro ao processar os dados.';
+    }
   }
 ?>
 
@@ -52,7 +54,7 @@
             <?php endif; ?>
         </div>
 
-        <form method="POST" action="" onsubmit="document.getElementById('btnCalcular').disabled = true; document.getElementById('btn-text').innerText = 'Calculando...';">
+        <form method="POST" action="#resultado">
           <div class="input-group">
             <label for="nome">Nome do Paciente</label>
             <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>" />
@@ -85,7 +87,12 @@
           </div>
 
           
-          <button type="submit" id="btnCalcular">
+          <!-- <button type="submit" id="btnCalcular">
+            <span id="btn-text">Calcular Valores</span>
+          </button> -->
+
+          <button type="submit" id="btnCalcular" 
+            onclick="this.innerHTML='<div class=\'spinner\'></div> Calculando...';">
             <span id="btn-text">Calcular Valores</span>
           </button>
         </form>

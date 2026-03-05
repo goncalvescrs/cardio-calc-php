@@ -87,13 +87,6 @@ button {
   gap: 10px;
 }
 
-/* --- SPINNER E ESTADOS DO BOTÃO --- */
-
-button:disabled {
-  background-color: #a0c4ff;
-  cursor: not-allowed;
-}
-
 .spinner {
   width: 20px;
   height: 20px;

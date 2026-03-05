@@ -34,7 +34,7 @@ function calcularAvaliacaoFisio($nome, $idade, $genero, $peso, $altura) {
 
 function validarPaciente($nome, $idade, $peso, $altura, $genero) {
     if (empty($nome) || empty($idade) || empty($peso) || empty($altura) || empty($genero)) {
-        return "Por favor, preencha todos os campos corretamente.";
+        return "Preencha todos os campos corretamente.";
     }
     if ($idade < 1 || $idade > 110) {
         return "Insira uma IDADE válida.";
