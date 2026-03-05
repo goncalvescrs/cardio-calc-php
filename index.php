@@ -37,13 +37,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FisioCalc - Avaliação</title>
+    <title>FisioHelp - Avaliação</title>
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
     <div class="container">
       <header>
-        <h1>FisioCalc</h1>
+        <h1>Calculadora</h1>
         <p>Valores Preditivos Cardiorresp. e Força</p>
       </header>
 
