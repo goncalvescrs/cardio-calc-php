@@ -54,7 +54,7 @@
             <?php endif; ?>
         </div>
 
-        <form method="POST" action="#resultado">
+        <form method="POST" action="">
           <div class="input-group">
             <label for="nome">Nome do Paciente</label>
             <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>" />
@@ -128,6 +128,7 @@
             </div>
           </div>
         </section>
+        <script>document.getElementById('resultado').scrollIntoView();</script>
       <?php endif; ?>
     </div>
 
