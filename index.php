@@ -137,7 +137,7 @@
           </h4>
           <div class="result-cards third-result">
             <div class="card">
-              <h4>Distância Percorrida</h4>
+              <h4>Distância Prevista</h4>
               <p><span id="dom-val"><?= $dadosPaciente['tc6m'] ?></span> <small>m</small></p>
             </div>
           </div>
