@@ -95,7 +95,6 @@
 
       <?php if ($exibirResultado): ?>
         <section id="resultado" class="result-section">
-          <!-- <h3>Paciente: <span id="res-nome"><?= htmlspecialchars($dadosPaciente['nome']) ?></span></h3> -->
             <div class="paciente-info-grid">
               <p><strong>Paciente:</strong> <span id="res-nome"><?= htmlspecialchars($nome) ?></span></p>
               
