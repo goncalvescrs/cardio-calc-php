@@ -1,26 +1,20 @@
 <?php
-  // 1. IMPORTAÇÃO DA LÓGICA (O "Use Case")
   require_once 'src/calcularAvaliacaoFisio.php';
 
-  // 2. ESTADO INICIAL DA TELA
   $exibirResultado = false;
   $dadosPaciente = [];
   $erroMensagem = '';
 
-  // 3. FLUXO DE CONTROLE (Interceptando o POST do formulário)
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
           
-    // Captura e sanitiza os dados que vieram do HTML
     $nome = !empty($_POST['nome']) ? trim($_POST['nome']) : "Anônimo";
     $idade = isset($_POST['idade']) ? (int)$_POST['idade'] : 0;
     $genero = $_POST['genero'] ?? '';
     $peso = isset($_POST['peso']) ? (float)$_POST['peso'] : 0;
     $altura = isset($_POST['altura']) ? (float)$_POST['altura'] : 0;
 
-    // Chama a regra de negócio isolada
     $resposta = calcularAvaliacaoFisio($nome, $idade, $genero, $peso, $altura);
     
-    // Verifica o estado da resposta para decidir o que renderizar
     if (isset($resposta['sucesso']) && $resposta['sucesso'] === true) {
         $dadosPaciente = $resposta;
         $exibirResultado = true;
@@ -39,6 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FisioHelp - Avaliação</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <div class="container">
@@ -54,12 +49,12 @@
             <?php endif; ?>
         </div>
 
-        <form method="POST" action="">
+        <form id="formCalculadora" method="POST" action="">
           <div class="input-group">
             <label for="nome">Nome do Paciente</label>
             <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($_POST['nome'] ?? '') ?>" onfocus="this.value=''"/>
           </div>
-
+          
           <div class="grid-inputs">
             <div class="input-group">
               <label for="idade">Idade (anos)</label>
@@ -86,8 +81,7 @@
             </div>
           </div>
 
-          <button type="submit" id="btnCalcular" 
-            onclick="this.innerHTML='<div class=\'spinner\'></div> Calculando...';">
+          <button type="submit" id="btnCalcular" >
             <span id="btn-text">Calcular Valores</span>
           </button>
         </form>
@@ -142,9 +136,6 @@
             </div>
           </div>
         </section>
-
-        
-        <script>document.getElementById('resultado').scrollIntoView();</script>
       <?php endif; ?>
     </div>
 

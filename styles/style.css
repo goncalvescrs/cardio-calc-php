@@ -17,18 +17,28 @@ body {
   font-family: "Segoe UI", system-ui, sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  padding: 15px;
   line-height: 1.6;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* CONTAINER - Mobile Primeiro (100% de largura) */
 .container {
   background: var(--white);
-  padding: 20px;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   width: 100%;
-  margin: 0 auto;
+  max-width: 500px;
+
+  padding: 20px;
+  box-sizing: border-box;
+  margin: auto;
 }
 
 header {
@@ -44,7 +54,7 @@ h1 {
 
 /* FORMULÁRIO */
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 label {
@@ -63,11 +73,12 @@ select {
   font-size: 1rem;
 }
 
-/* GRID - Em mobile fica uma coluna só por padrão */
-.grid-inputs {
+.grid-inputs,
+.result-cards,
+.paciente-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 15px;
 }
 
 button {
@@ -112,7 +123,7 @@ button {
 
 .result-cards {
   display: grid;
-  grid-template-columns: 1fr; /* Um embaixo do outro no celular */
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 15px;
 }
@@ -125,13 +136,12 @@ button {
   border-left: 4px solid var(--primary);
 }
 
-.third-result {
-  display: block;
-}
-
-/* Cor secundária para o segundo bloco de resultados */
 .secondary-result .card {
   border-left: 4px solid #55a630;
+}
+
+.third-result {
+  display: block;
 }
 
 .third-result .card {
@@ -140,11 +150,11 @@ button {
 
 .paciente-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Cria 2 colunas de tamanhos iguais */
-  gap: 5px; /* Espaço entre os itens */
-  margin: 15px 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin: 12px 0;
   padding: 10px;
-  background-color: #ffffff; /* Um fundo leve para destacar */
+  background-color: #ffffff;
   border-radius: 8px;
 }
 
@@ -171,7 +181,6 @@ button {
   border: 1px solid #ff7675;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.126);
 
-  /* Adicionamos o fadeOut após 3 segundos */
   animation:
     dropDown 0.3s ease-out forwards,
     fadeOut 0.5s ease-in 3s forwards;
@@ -179,16 +188,15 @@ button {
 
 @keyframes dropDown {
   from {
-    transform: translate(-50%, -100px);
+    transform: translate(-50%, -20px) scale(0.95);
     opacity: 0;
   }
   to {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) scale(1);
     opacity: 1;
   }
 }
 
-/* Nova animação para sumir com o erro */
 @keyframes fadeOut {
   to {
     opacity: 0;
@@ -201,23 +209,21 @@ button {
 }
 
 footer {
-  padding: 20px;
+  margin-top: 15px;
   text-align: center;
+  color: #878787;
 }
 
 /* --- MEDIA QUERIES (DESKTOP) --- */
 @media (min-width: 768px) {
   .container {
-    max-width: 600px;
+    max-width: 650px;
     padding: 40px;
   }
 
-  .grid-inputs {
-    grid-template-columns: 1fr 1fr; /* Duas colunas em telas maiores */
-  }
-
+  .grid-inputs,
   .result-cards {
-    grid-template-columns: 1fr 1fr; /* Cards lado a lado no desktop */
+    grid-template-columns: 1fr 1fr;
   }
 
   h1 {
@@ -227,6 +233,6 @@ footer {
 
 @media (max-width: 400px) {
   .paciente-grid {
-    grid-template-columns: 1fr; /* Vira uma coluna única em telas bem pequenas */
+    grid-template-columns: 1fr;
   }
 }
